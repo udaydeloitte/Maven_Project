@@ -24,24 +24,47 @@ public class LoginTest {
         //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.get("https://www.saucedemo.com/");
         Thread.sleep(2000);
-        File file = new File("C:\\Users\\udayprsingh\\IdeaProjects\\Mini_Assignment4\\src\\main\\resources\\DataUser.xlsx");
+        File file = new File("C:\\Users\\udayprsingh\\IdeaProjects\\Mini_Assignment4\\src\\main\\resources\\DataUser.xls");
         System.out.println(file.exists());
         FileInputStream inputStream = new FileInputStream(file);
         HSSFWorkbook wb=new HSSFWorkbook(inputStream);
-        HSSFSheet sheet=wb.getSheet("Book1");
-        HSSFRow row1=sheet.getRow(1);
-        HSSFCell cell1=row1.getCell(0);
-        HSSFCell cell2=row1.getCell(1);
-        String username1=cell1.getStringCellValue();
-        String password1=cell2.getStringCellValue();
-        WebElement username = driver.findElement(By.xpath("//*[@id='user-name']"));
-        username.click();
-        username.sendKeys(username1);
-        WebElement password = driver.findElement(By.xpath("//*[@id='password']"));
-        password.click();
-        password.sendKeys(password1);
-        WebElement loginButton = driver.findElement(By.xpath("//*[@id='login-button']"));
-        loginButton.click();
+        HSSFSheet sheet=wb.getSheet("Sheet1");
+        int rows=sheet.getPhysicalNumberOfRows();
+        int cols=sheet.getRow(0).getLastCellNum();
+        String email=null;
+        String pass=null;
+        for(int i=1;i<rows;i++){
+            for (int j=0;j<cols;j++){
+                if (j==0){
+                    email=sheet.getRow(i).getCell(j).getStringCellValue();
+                }
+                if(j==1){
+                    pass=sheet.getRow(i).getCell(j).getStringCellValue();
+                }
+                    //System.out.println(sheet.getRow(i).getCell(j).getStringCellValue());
+            }
+                driver.findElement(By.xpath("//*[@id=\"user-name\"]")).sendKeys(email);
+                driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys(pass);
+                Thread.sleep(1000);
+                driver.findElement(By.xpath("//*[@id=\"login-button\"]")).click();
+                Thread.sleep(1000);
+
+
+        }
+        wb.close();
+        inputStream.close();
+        WebElement sort = driver.findElement(By.xpath("//*[@id='header_container']//span/select"));
+        sort.click();
+        Thread.sleep(3000);
+        WebElement HighToLow = driver.findElement(By.xpath("//*[@id='header_container']//select/option[4]"));
+        HighToLow.click();
+        Thread.sleep(3000);
+        WebElement HighestPricedProduct = driver.findElement(By.xpath("//*[@id='add-to-cart-sauce-labs-fleece-jacket']"));
+        HighestPricedProduct.click();
+        Thread.sleep(3000);
+
+
+
 
     }
 
