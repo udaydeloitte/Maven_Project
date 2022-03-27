@@ -35,8 +35,12 @@ public class Addcustomerdetails extends TestBase {
 
     }
     public void addcustomerdata(String fname, String ln, String pcode) throws InterruptedException {
+
+        Thread.sleep(2000);
         firstname.sendKeys(fname);
+        Thread.sleep(1000);
         lastname.sendKeys(ln);
+        Thread.sleep(1000);
         postcode.sendKeys(pcode);
         addcustomerbtn.click();
         Alert simplealert=driver.switchTo().alert();

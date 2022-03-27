@@ -17,6 +17,7 @@ public class AddcustomerdetailsTest extends TestBase {
     public void setUP(){
         initialization();
         objaddcustomerdetails=new Addcustomerdetails();
+
     }
     @Test
     public void addcustomertest() throws InterruptedException {
@@ -28,6 +29,7 @@ public class AddcustomerdetailsTest extends TestBase {
 
     @AfterMethod
     public void tearDown(){
+
         driver.quit();
     }
 
