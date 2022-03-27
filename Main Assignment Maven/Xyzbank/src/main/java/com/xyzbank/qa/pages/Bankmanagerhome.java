@@ -22,7 +22,6 @@ public class Bankmanagerhome extends TestBase {
 
 
     public Bankmanagerhome(){
-
         PageFactory.initElements(driver,this);
     }
     public Addcustomerdetails clickaddcustomer() throws InterruptedException {
@@ -50,7 +49,6 @@ public class Bankmanagerhome extends TestBase {
         Thread.sleep(2000);
         return new Loginpage();
     }
-
 
 
 }

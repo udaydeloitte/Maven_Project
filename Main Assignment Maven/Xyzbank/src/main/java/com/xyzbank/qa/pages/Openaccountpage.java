@@ -1,9 +1,11 @@
 package com.xyzbank.qa.pages;
 
 import com.xyzbank.qa.base.TestBase;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class Openaccountpage extends TestBase {
     //Page Factory- OR;
@@ -24,6 +26,7 @@ public class Openaccountpage extends TestBase {
 
     @FindBy(xpath = "//button[normalize-space()='Add Customer']")
     WebElement addcustomer;
+    public String altmsg;
 
     public Openaccountpage(){
         PageFactory.initElements(driver,this);
@@ -45,6 +48,20 @@ public class Openaccountpage extends TestBase {
         Thread.sleep(2000);
         return new Addcustomerdetails();
 
+    }
+    public void userdraopdown(String name,String currencyuser) throws InterruptedException {
+        Select selectuser=new Select(userselect);
+        selectuser.selectByVisibleText(name);
+        Thread.sleep(2000);
+        Select selectcurrency=new Select(currency);
+        selectcurrency.selectByVisibleText(currencyuser);
+        Thread.sleep(2000);
+        processbtn.click();
+        Alert simplealert=driver.switchTo().alert();
+        altmsg= simplealert.getText();
+        Thread.sleep(2000);
+        simplealert.accept();
+        Thread.sleep(2000);
     }
 
 }

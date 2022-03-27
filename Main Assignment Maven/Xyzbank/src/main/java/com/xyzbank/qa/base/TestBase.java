@@ -36,7 +36,6 @@ public class TestBase {
             driver=new ChromeDriver();
         }
         driver.manage().window().maximize();
-        //driver.manage().timeouts().implicitlyWait(Testutil.implicit,TimeUnit.SECONDS);
         driver.get(prop.getProperty("url"));
     }
 }

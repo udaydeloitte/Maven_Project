@@ -40,7 +40,11 @@ public class OpenaccountTest extends TestBase {
     public void clickaddcustomerTest() throws InterruptedException {
         objaddcustomerdetails=openaccount.clickaddcustomer();
     }
+    @Test(priority = 4)
+    public void userdropdownTest() throws InterruptedException {
+        openaccount.userdraopdown("Harry Potter","Dollar");
 
+    }
 
 
 
