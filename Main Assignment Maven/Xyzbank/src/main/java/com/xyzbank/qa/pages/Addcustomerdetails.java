@@ -42,12 +42,30 @@ public class Addcustomerdetails extends TestBase {
         lastname.sendKeys(ln);
         Thread.sleep(1000);
         postcode.sendKeys(pcode);
+        Thread.sleep(1000);
         addcustomerbtn.click();
         Alert simplealert=driver.switchTo().alert();
         alertmsg= simplealert.getText();
         Thread.sleep(2000);
         simplealert.accept();
+        Thread.sleep(2000);
     }
+    public Loginpage clickhomebtn() throws InterruptedException {
+        homebtn.click();
+        Thread.sleep(2000);
+        return new Loginpage();
+    }
+    public Openaccountpage accountbtn() throws InterruptedException {
+        openaccountbtn.click();
+        Thread.sleep(2000);
+        return new Openaccountpage();
+    }
+    public Customerspage customebtn() throws InterruptedException {
+        customersbtn.click();
+        Thread.sleep(2000);
+        return new Customerspage();
+    }
+
 
 
 }

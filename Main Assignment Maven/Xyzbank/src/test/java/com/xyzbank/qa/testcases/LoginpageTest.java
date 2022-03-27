@@ -14,6 +14,7 @@ public class LoginpageTest extends TestBase {
     Bankmanagerhome objbankmanagerhome;
     Namepage objnamepage;
     public LoginpageTest(){
+
         super();
     }
 
