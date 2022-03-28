@@ -25,7 +25,7 @@ public class Loginpage extends TestBase {
     public Bankmanagerhome clickonmanagerlogin() throws InterruptedException {
         Thread.sleep(2000);
         bankmanager.click();
-        Thread.sleep(2000);
+
         return new Bankmanagerhome();
 
     }

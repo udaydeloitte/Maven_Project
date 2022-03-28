@@ -2,10 +2,16 @@ package com.xyzbank.qa.testcases;
 
 import com.xyzbank.qa.base.TestBase;
 import com.xyzbank.qa.pages.*;
-import org.testng.Assert;
+
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 public class AddcustomerdetailsTest extends TestBase {
     Addcustomerdetails objaddcustomerdetails;
@@ -13,8 +19,8 @@ public class AddcustomerdetailsTest extends TestBase {
     Bankmanagerhome bankmanagerhome;
     Openaccountpage openaccount;
     Customerspage customerspage;
+    String sheetName="xyzUserData";
     public AddcustomerdetailsTest(){
-
         super();
     }
     @BeforeMethod
@@ -30,11 +36,39 @@ public class AddcustomerdetailsTest extends TestBase {
         Thread.sleep(2000);
 
     }
-    @Test(priority = 1)
-    public void addcustomertest() throws InterruptedException {
-        objaddcustomerdetails.addcustomerdata(prop.getProperty("firstname"), prop.getProperty("lastname"),prop.getProperty("postcode"));
-        Assert.assertEquals(objaddcustomerdetails.alertmsg,"Customer added successfully with customer id :6");
 
+    @Test(priority = 1)
+    public void addcustomerdataTEST() throws IOException, InterruptedException {
+        File file = new File("C:\\Users\\udayprsingh\\IdeaProjects\\Xyzbank\\src\\main\\java\\com\\xyzbank\\qa\\testdata\\xyzUserData.xlsx");
+        FileInputStream inputStream = new FileInputStream(file);
+        XSSFWorkbook wb=new XSSFWorkbook(inputStream);
+        XSSFSheet sheet=wb.getSheet("xyzUserData");
+        int rows=sheet.getPhysicalNumberOfRows();
+        int cols=sheet.getRow(0).getLastCellNum();
+        String first=null;
+        String last=null;
+        String postcode=null;
+        for(int i=1;i<rows;i++) {
+            for (int j = 0; j < cols; j++) {
+                if (j == 0) {
+                    first= sheet.getRow(i).getCell(j).getStringCellValue();
+                }
+                if (j == 1) {
+                    last= sheet.getRow(i).getCell(j).getStringCellValue();
+                }
+                if(j==2){
+                    postcode=sheet.getRow(i).getCell(j).getStringCellValue();
+                }
+
+            }
+            System.out.println(first+" "+last+" "+postcode);
+            objaddcustomerdetails.addcustomerdata(first,last,postcode);
+            System.out.println(objaddcustomerdetails.alertmsg);
+            objaddcustomerdetails.customebtn();
+            customerspage.addCutomer();
+        }
+        wb.close();
+        inputStream.close();
     }
 
     @Test(priority =2)
@@ -49,11 +83,6 @@ public class AddcustomerdetailsTest extends TestBase {
     @Test(priority = 4)
     public void customerbtntest() throws InterruptedException {
         customerspage=objaddcustomerdetails.customebtn();
-    }
-    @Test(priority = 5)
-    public void addDuplicateCustomerTest() throws InterruptedException {
-        objaddcustomerdetails.addcustomerdata(prop.getProperty("duplicatefname"), prop.getProperty("duplicatelname"), prop.getProperty("duplicatepcode"));
-        Assert.assertEquals(objaddcustomerdetails.alertmsg,"Please check the details. Customer may be duplicate.");
     }
 
 

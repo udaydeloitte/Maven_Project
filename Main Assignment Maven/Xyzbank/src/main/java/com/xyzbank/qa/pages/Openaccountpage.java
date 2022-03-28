@@ -55,13 +55,12 @@ public class Openaccountpage extends TestBase {
         Thread.sleep(2000);
         Select selectcurrency=new Select(currency);
         selectcurrency.selectByVisibleText(currencyuser);
-        Thread.sleep(2000);
         processbtn.click();
         Alert simplealert=driver.switchTo().alert();
         altmsg= simplealert.getText();
-        Thread.sleep(2000);
         simplealert.accept();
         Thread.sleep(2000);
+
     }
 
 }

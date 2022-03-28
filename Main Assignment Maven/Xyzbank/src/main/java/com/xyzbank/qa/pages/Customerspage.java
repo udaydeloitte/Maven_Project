@@ -1,15 +1,18 @@
 package com.xyzbank.qa.pages;
 
 import com.xyzbank.qa.base.TestBase;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class Customerspage extends TestBase {
+    Actions actions=new Actions(driver);
     @FindBy(xpath = "//input[@placeholder='Search Customer']")
     WebElement inputCustomer;
 
-    @FindBy(xpath = "//button[@ng-click='deleteCust(cust)']")
+    @FindBy(xpath = "//button[text()='Delete']")
     WebElement deleteBtn;
 
     @FindBy(xpath = "//button[normalize-space()='Add Customer']")
@@ -22,13 +25,17 @@ public class Customerspage extends TestBase {
     WebElement openbtn;
 
     public Customerspage(){
+
         PageFactory.initElements(driver,this);
     }
     public void fillvalue(String username) throws InterruptedException{
         inputCustomer.sendKeys(username);
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         deleteBtn.click();
         Thread.sleep(1000);
+        actions.click(inputCustomer).keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).sendKeys(Keys.BACK_SPACE).build().perform();
+        Thread.sleep(1000);
+
     }
     public Addcustomerdetails addCutomer() throws InterruptedException {
         addcustomer.click();
@@ -45,6 +52,7 @@ public class Customerspage extends TestBase {
         Thread.sleep(2000);
         return new Openaccountpage();
     }
+
 
 }
 

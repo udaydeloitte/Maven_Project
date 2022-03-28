@@ -5,6 +5,12 @@ import com.xyzbank.qa.pages.*;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 public class CustomerspageTest extends TestBase {
     Customerspage objcustomer;
@@ -28,23 +34,38 @@ public class CustomerspageTest extends TestBase {
         objcustomer= bankmanagerhome.clickcustomers();
         Thread.sleep(2000);
     }
-    @Test
-    public void fillvalueTeet() throws InterruptedException {
-        objcustomer.fillvalue(prop.getProperty("firstname"));
+    @Test(priority = 4)
+    public void fillvalueTeet() throws InterruptedException, IOException {
+        File file = new File("C:\\Users\\udayprsingh\\IdeaProjects\\Xyzbank\\src\\main\\java\\com\\xyzbank\\qa\\testdata\\xyzUserData.xlsx");
+        FileInputStream inputStream = new FileInputStream(file);
+        XSSFWorkbook wb=new XSSFWorkbook(inputStream);
+        XSSFSheet sheet=wb.getSheet("xyzUserData");
+        int rows=sheet.getPhysicalNumberOfRows();
+        int cols=1;
+        String name=null;
+        for(int i=1;i<rows;i++){
+            for (int j=0;j<cols;j++){
+                if (j == 0) {
+                    name= sheet.getRow(i).getCell(j).getStringCellValue();
+                }
+            }
+            objcustomer.fillvalue(name);
+            System.out.println("Deleted user account: "+name);
+
+        }
+
+
     }
-    @Test
-    public void fillvalueDTeet() throws InterruptedException {
-        objcustomer.fillvalue(prop.getProperty("duplicatefname"));
-    }
-    @Test
+
+    @Test(priority = 1)
     public void addcustomerTest() throws InterruptedException {
         objaddcustomer = objcustomer.addCutomer();
     }
-    @Test
+    @Test(priority = 2)
     public void clickhomeTest() throws InterruptedException {
         loginpage = objcustomer.clickhome();
     }
-    @Test
+    @Test(priority = 3)
     public void openacntTest() throws InterruptedException {
        objopencnt = objcustomer.clickopenacnt();
     }

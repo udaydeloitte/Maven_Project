@@ -5,11 +5,10 @@
         <classes>
             <class name="com.xyzbank.qa.testcases.AddcustomerdetailsTest">
                 <methods>
-                    <include name="addcustomertest"/>
+                    <include name="addcustomerdataTEST"/>
                     <include name="homebtmtest"/>
                     <include name="accountbtntest"/>
                     <include name="customerbtntest"/>
-                    <include name="addDuplicateCustomerTest"/>
                 </methods>
             </class>
             <class name="com.xyzbank.qa.testcases.BankmanagerhomeTest">
@@ -18,6 +17,14 @@
                     <include name="openaccounttest"/>
                     <include name="customerstest"/>
                     <include name="homebtmtest"/>
+                </methods>
+            </class>
+            <class name="com.xyzbank.qa.testcases.CustomerspageTest">
+                <methods>
+                    <include name="fillvalueTeet"/>
+                    <include name="addcustomerTest"/>
+                    <include name="clickhomeTest"/>
+                    <include name="openacntTest"/>
                 </methods>
             </class>
             <class name="com.xyzbank.qa.testcases.LoginpageTest">

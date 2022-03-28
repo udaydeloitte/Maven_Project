@@ -27,7 +27,6 @@ public class Bankmanagerhome extends TestBase {
     public Addcustomerdetails clickaddcustomer() throws InterruptedException {
         Thread.sleep(2000);
         addcustomer.click();
-        Thread.sleep(2000);
         return new Addcustomerdetails();
     }
     public Customerspage clickcustomers() throws InterruptedException {

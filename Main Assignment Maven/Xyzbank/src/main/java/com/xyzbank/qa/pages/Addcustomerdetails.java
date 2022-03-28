@@ -29,27 +29,23 @@ public class Addcustomerdetails extends TestBase {
     @FindBy(xpath = "//button[normalize-space()='Customers']")
     WebElement customersbtn;
     public String alertmsg;
+
     //initialize page objects
     public Addcustomerdetails(){
         PageFactory.initElements(driver,this);
 
     }
     public void addcustomerdata(String fname, String ln, String pcode) throws InterruptedException {
-
-        Thread.sleep(2000);
         firstname.sendKeys(fname);
-        Thread.sleep(1000);
         lastname.sendKeys(ln);
-        Thread.sleep(1000);
         postcode.sendKeys(pcode);
-        Thread.sleep(1000);
         addcustomerbtn.click();
         Alert simplealert=driver.switchTo().alert();
         alertmsg= simplealert.getText();
-        Thread.sleep(2000);
         simplealert.accept();
-        Thread.sleep(2000);
+
     }
+
     public Loginpage clickhomebtn() throws InterruptedException {
         homebtn.click();
         Thread.sleep(2000);
