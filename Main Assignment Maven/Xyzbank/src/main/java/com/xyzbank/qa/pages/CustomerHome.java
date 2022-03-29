@@ -22,6 +22,10 @@ public class CustomerHome extends TestBase {
     WebElement depositBtn;
     @FindBy(xpath = "//input[@placeholder='amount']")
     WebElement field;
+    @FindBy(xpath = "//button[@type='submit']")
+    WebElement finaldepo;
+    @FindBy(xpath = "//span[@class='error ng-binding']")
+    WebElement sucess;
     public CustomerHome(){
         PageFactory.initElements(driver,this);
     }
@@ -40,7 +44,10 @@ public class CustomerHome extends TestBase {
             Thread.sleep(2000);
             String s=String.valueOf(val);
             field.sendKeys(s);
-
+            Thread.sleep(2000);
+            finaldepo.click();
+            Thread.sleep(2000);
+            System.out.println(sucess.getText());
 
         }
         return new CustomerInfo();
