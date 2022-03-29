@@ -58,6 +58,7 @@ public class CustomerHomeTest extends TestBase {
             }
             System.out.println(customerName);
             objCustomerHome.selection(customerName,rows,val);
+            Assert.assertEquals(objCustomerHome.msg,"Deposit Successful");
         }
         wb.close();
         inputStream.close();

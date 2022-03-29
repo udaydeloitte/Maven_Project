@@ -12,6 +12,8 @@ import org.openqa.selenium.support.ui.Select;
 
 public class CustomerHome extends TestBase {
     Actions actions=new Actions(driver);
+    @FindBy(xpath = "//button[@class='btn logout']")
+    WebElement logoutbtn;
     @FindBy(xpath = "//button[@class='btn home']")
     WebElement homebtn;
     @FindBy(xpath = "//select[@id='userSelect']")
@@ -26,6 +28,7 @@ public class CustomerHome extends TestBase {
     WebElement finaldepo;
     @FindBy(xpath = "//span[@class='error ng-binding']")
     WebElement sucess;
+    public String msg;
     public CustomerHome(){
         PageFactory.initElements(driver,this);
     }
@@ -34,22 +37,18 @@ public class CustomerHome extends TestBase {
         Select selectuser=new Select(user);
         selectuser.selectByVisibleText(username);
         Thread.sleep(2000);
-        actions.click(user).keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).sendKeys(Keys.BACK_SPACE).build().perform();
 
-        var++;
-        if(var==cnt) {
-            loginbtn.click();
-            Thread.sleep(1000);
-            depositBtn.click();
-            Thread.sleep(2000);
-            String s=String.valueOf(val);
-            field.sendKeys(s);
-            Thread.sleep(2000);
-            finaldepo.click();
-            Thread.sleep(2000);
-            System.out.println(sucess.getText());
-
-        }
+        loginbtn.click();
+        Thread.sleep(2000);
+        depositBtn.click();
+        Thread.sleep(2000);
+        String s=String.valueOf(val);
+        field.sendKeys(s);
+        Thread.sleep(2000);
+        finaldepo.click();
+        Thread.sleep(2000);
+        msg=sucess.getText();
+        logoutbtn.click();
         return new CustomerInfo();
 
 
