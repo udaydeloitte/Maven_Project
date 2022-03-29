@@ -40,6 +40,7 @@ public class Addcustomerdetails extends TestBase {
         lastname.sendKeys(ln);
         postcode.sendKeys(pcode);
         addcustomerbtn.click();
+        Thread.sleep(2000);
         Alert simplealert=driver.switchTo().alert();
         alertmsg= simplealert.getText();
         simplealert.accept();

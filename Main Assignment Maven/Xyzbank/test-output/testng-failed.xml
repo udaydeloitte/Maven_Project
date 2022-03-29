@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="2" parallel="classes" name="Failed suite [All Test Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="2" parallel="classes" name="C:/Users/udayprsingh/IdeaProjects/Xyzbank(failed)">
+    <classes>
+      <class name="com.xyzbank.qa.testcases.AddcustomerdetailsTest">
+        <methods>
+          <include name="addcustomerdataTEST"/>
+          <include name="setUP"/>
+          <include name="accountbtntest"/>
+          <include name="tearDown"/>
+          <include name="customerbtntest"/>
+          <include name="homebtmtest"/>
+        </methods>
+      </class> <!-- com.xyzbank.qa.testcases.AddcustomerdetailsTest -->
+      <class name="com.xyzbank.qa.testcases.BankmanagerhomeTest">
+        <methods>
+          <include name="customerstest"/>
+          <include name="setUp"/>
+          <include name="homebtmtest"/>
+          <include name="openaccounttest"/>
+          <include name="addcustomertest"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.xyzbank.qa.testcases.BankmanagerhomeTest -->
+      <class name="com.xyzbank.qa.testcases.CustomerspageTest">
+        <methods>
+          <include name="openacntTest"/>
+          <include name="clickhomeTest"/>
+          <include name="addcustomerTest"/>
+          <include name="setUP"/>
+          <include name="tearDown"/>
+          <include name="fillvalueTeet"/>
+        </methods>
+      </class> <!-- com.xyzbank.qa.testcases.CustomerspageTest -->
+    </classes>
+  </test> <!-- C:/Users/udayprsingh/IdeaProjects/Xyzbank(failed) -->
+</suite> <!-- Failed suite [All Test Suite] -->

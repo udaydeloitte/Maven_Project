@@ -1,9 +1,13 @@
 package com.xyzbank.qa.base;
 
 //import com.xyzbank.qa.util.Testutil;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -38,4 +42,5 @@ public class TestBase {
         driver.manage().window().maximize();
         driver.get(prop.getProperty("url"));
     }
+
 }

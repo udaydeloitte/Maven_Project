@@ -4,8 +4,9 @@ import com.xyzbank.qa.base.TestBase;
 import com.xyzbank.qa.pages.*;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
+@Listeners(ExtebtReport.class)
 public class BankmanagerhomeTest extends TestBase {
     Bankmanagerhome objbankmanagerhome;
     Addcustomerdetails objaddcustomerdetails1;
